@@ -1,0 +1,51 @@
+<func(query string, args ...interface{}) (database/sql.Result, error); database/sql.Exec> -> _SINK_
+<func(query string, args ...interface{}) (database/sql.Rows, error); database/sql.Query> -> _SINK_
+<func(query string, args ...interface{}) database/sql.Rows; database/sql.QueryRow> -> _SINK_
+<func(b []byte) (n int, err error); (*os.File).Write> -> _SINK_
+<func(name string, flag int, perm os.FileMode) (*os.File, error); os.OpenFile> -> _SOURCE_
+<func() []string; os.Environ> -> _SOURCE_
+<func(n int) (fi []os.FileInfo, error); os.Readdir> -> _SOURCE_
+<func(n int) ([]string, error); os.Readdirnames> -> _SOURCE_
+<func() error; os/exec.Run> -> _SOURCE_
+<func() error; os/exec.Start> -> _SOURCE_
+<func() (*os/user.User, error); os/user.Current> -> _SOURCE_
+<func(username string) (*os/user.User, error); os/user.Lookup> -> _SOURCE_
+<func(uid string) (*os/user.User, error); os/user.LookupId> -> _SOURCE_
+<func(fi os.FileInfo, link string) (*archive/tar.Header, error); archive/tar.FileInfoHeader> -> _SOURCE_
+<func() os.FileInfo; archive/tar.FileInfo> -> _SOURCE_
+<func() (*archive/tar.Header, error); archive/tar.Next> -> _SOURCE_
+<func() (byte, error); bufio.ReadByte> -> _SOURCE_
+<func(delim byte) ([]byte, error); bufio.ReadBytes> -> _SOURCE_
+<func() ([]byte, bool, error);  bufio.ReadLine> -> _SOURCE_
+<func() (rune, int, error); bufio.ReadRune> -> _SOURCE_
+<func(delim byte) ([]byte, error); bufio.ReadSlice> -> _SOURCE_
+<func(delim byte) (string, error); bufio.ReadString> -> _SOURCE_
+<func() []byte; bufio.Bytes> -> _SOURCE_
+<func() string; bufio.Text> -> _SOURCE_
+<func() (byte, error); bytes.ReadByte> -> _SOURCE_
+<func(delim byte) ([]byte, error); bytes.ReadBytes> -> _SOURCE_
+<func() string; bytes.String> -> _SOURCE_
+<func() bool; crypto.Available> -> _SOURCE_
+<func(certFile, keyFile stirng) (crypto/tls.Certificate, error); crypto/tls.LoadX509KeyPair> -> _SOURCE_
+<func(certPEMBlock, keyPEMBlock []byte) (crypto/tls.Certificate, error); crypto/tls.X509KeyPair> -> _SOURCE_
+<func() (res[][]byte); crypto/x509.Subjects> -> _SOURCE_
+<func(query string, args ...interface{}) (database/sql.Rows, error); database/sql.Query> -> _SOURCE_
+<func(query string, args ...interface{}) database/sql.Rows; database/sql.QueryRow> -> _SOURCE_
+<func(i int) string; flag.Arg> -> _SOURCE_
+<func() []string; flag.Args> -> _SOURCE_
+<func(r io.Reader, buf []byte, min int) (int, error); io.ReadAtLeast> -> _SOURCE_
+<func(r io.Reader, buf []byte) (int, error); io.ReadFull> -> _SOURCE_
+%interface
+I<func() (byte, error); ReadByte> -> _SOURCE_
+%interface
+I<func(p []byte) (int, error); Read> -> _SOURCE_
+%interface
+I<func(p []byte, off int64) (int, error); ReadAt> -> _SOURCE_
+%interface
+I<func(r io.Reader) (int64, error); ReadFrom> -> _SOURCE_
+%interface
+I<func() (rune, int, error); ReadRune> -> _SOURCE_
+I<func() (string); ReadDir> -> _SOURCE_
+% only for testing
+<func() string; goretech/analysis.source> -> _SOURCE_
+<func(s string) ; goretech/analysis.sink> -> _SINK_
