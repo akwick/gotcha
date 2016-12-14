@@ -1,7 +1,7 @@
 package transferFunction
 
 import (
-	"goretech/analysis/lattice"
+	"github.com/akwick/gotcha/lattice"
 
 	"golang.org/x/tools/go/pointer"
 	"golang.org/x/tools/go/ssa"

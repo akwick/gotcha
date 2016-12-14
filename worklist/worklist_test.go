@@ -1,8 +1,8 @@
 package worklist
 
 import (
-	"goretech/analysis/lattice"
-	"goretech/analysis/lattice/taint"
+	"github.com/akwick/gotcha/lattice"
+	"github.com/akwick/gotcha/lattice/taint"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -13,7 +13,7 @@ import (
 func TestPredecessors(t *testing.T) {
 	src = []string{"../tests/exampleCode/chanPaper0.go"}
 	allpkgs = false
-	_, _ = initSSAandPTA("goretech/analysis", src, "../sourcesAndSinks.txt", "")
+	_, _ = initSSAandPTA("github.com/akwick/gotcha", src, "../sourcesAndSinks.txt", "")
 	initContext(mainFunc)
 	var testInstr *ContextCallSite
 	testInstr = worklist.order[2]
@@ -34,7 +34,7 @@ func TestPredecessors(t *testing.T) {
 }
 
 func BenchmarkInitContext(b *testing.B) {
-	mainFunc, _ := initSSAandPTA("goretech/analysis", src, "../sourcesAndSinks.txt", "")
+	mainFunc, _ := initSSAandPTA("github.com/akwick/gotcha", src, "../sourcesAndSinks.txt", "")
 	for n := 0; n < b.N; n++ {
 		initContext(mainFunc)
 	}
@@ -43,13 +43,13 @@ func BenchmarkInitContext(b *testing.B) {
 func BenchmarkDoAnalysis(b *testing.B) {
 	// Tests without modification in the lattice -> is only for the performance
 	for n := 0; n < b.N; n++ {
-		DoAnalysis("goretech/analysis", src, "../sourcesAndSinks.txt", false, "", true)
+		DoAnalysis("github.com/akwick/gotcha", src, "../sourcesAndSinks.txt", false, "", true)
 	}
 }
 
 func TestUpdatePredecessors(t *testing.T) {
 	allpkgs = false
-	mainFunc, _ := initSSAandPTA("goretech/analysis", src, "../sourcesAndSinks.txt", "")
+	mainFunc, _ := initSSAandPTA("github.com/akwick/gotcha", src, "../sourcesAndSinks.txt", "")
 	initContext(mainFunc)
 	//make interface{} <- string ("Hello, World!":string) = testinstr
 	var instr ssa.Value
@@ -156,7 +156,7 @@ func TestUpdatePredecessors(t *testing.T) {
 }
 
 func TestFlow(t *testing.T) {
-	mainFunc, _ := initSSAandPTA("goretech/analysis", src, "../sourcesAndSinks.txt", "")
+	mainFunc, _ := initSSAandPTA("github.com/akwick/gotcha", src, "../sourcesAndSinks.txt", "")
 	initContext(mainFunc)
 	//make interface{} <- string ("Hello, World!":string)
 	var instr ssa.Value

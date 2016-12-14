@@ -5,7 +5,7 @@
 0. Installed go with version >= 1.5
 1. If the `$GOPATH` is not set, then: export GOPATH=$HOME/go (this directory is your workspace, create it somewhere)
 2. `ln -s PATH_TO_GIT/goretech $GOPATH/src/goretech`  
-2. `$ cd $GOPATH/src/goretech/analysis`
+2. `$ cd $GOPATH/src/github.com/akwick/gotcha`
 8. add missing packages via go get
   * `go get golang.org/x/tools/go/ssa`
   * `go get github.com/stretchr/testify/assert`
@@ -17,7 +17,7 @@
 
 ## Build the analysis
 
-0. cd $GOPATH/src/goretech/analysis
+0. cd $GOPATH/src/github.com/akwick/gotcha
 1. go build
 
 ## Run the analysis
@@ -26,7 +26,7 @@
 `./analysis -src="tests/exampleCode/hello.go"`
 1. The -src flag is mandatory, the path, ssf, allpkgs, pkgs and ptrflag are optional.
 2. The default parameter are:
-  - path = goretech/analysis
+  - path = github.com/akwick/gotcha
     - It is important to change the path if you are not running our examples.   
 
   - ssf = ./sourcesAndSinks.txt

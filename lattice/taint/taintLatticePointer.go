@@ -2,9 +2,9 @@
 package taint
 
 import (
+	"github.com/akwick/gotcha/lattice"
+	"github.com/akwick/gotcha/transferFunction"
 	"go/token"
-	"goretech/analysis/transferFunction"
-	"goretech/analysis/lattice"
 
 	"github.com/pkg/errors"
 

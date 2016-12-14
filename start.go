@@ -4,7 +4,7 @@ import (
 	"errors"
 	"flag"
 	"fmt"
-	"goretech/analysis/worklist"
+	"github.com/akwick/gotcha/worklist"
 	"os"
 	"strings"
 )
@@ -19,7 +19,7 @@ func main() {
 	}
 
 	var ssf = flag.String("ssf", "./sourcesAndSinks.txt", "Changes the file which holds the sources and sinks")
-	var path = flag.String("path", "goretech/analysis", "The path to the .go-files starting at $GOPATH/src: e.g. the path for $GOPATH/src/example/example.go will be example")
+	var path = flag.String("path", "github.com/akwick/gotcha", "The path to the .go-files starting at $GOPATH/src: e.g. the path for $GOPATH/src/example/example.go will be example")
 	var sourceFilesFlag sourcefiles
 	var allpkgs = flag.Bool("allpkgs", false, "If it is set all packages of the source file will be analyzed, else only the main package.")
 	var pkgs = flag.String("pkgs", "", "Specify some packages in addition to the main package which should be analyzed.")

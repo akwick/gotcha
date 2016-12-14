@@ -1,8 +1,8 @@
 package worklist
 
 import (
-	"goretech/analysis/lattice"
-	"goretech/analysis/lattice/taint"
+	"github.com/akwick/gotcha/lattice"
+	"github.com/akwick/gotcha/lattice/taint"
 	"log"
 
 	"github.com/pkg/errors"

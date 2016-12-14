@@ -3,9 +3,10 @@ package taint
 import (
 	"fmt"
 	"go/types"
-	"goretech/analysis/lattice"
-	"goretech/analysis/transferFunction"
 	"strings"
+
+	"github.com/akwick/gotcha/lattice"
+	"github.com/akwick/gotcha/transferFunction"
 
 	"golang.org/x/tools/go/pointer"
 	"golang.org/x/tools/go/ssa"

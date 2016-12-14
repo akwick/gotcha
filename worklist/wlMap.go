@@ -1,7 +1,7 @@
 package worklist
 
 import (
-	"goretech/analysis/ssabuilder"
+	"github.com/akwick/gotcha/ssabuilder"
 	"strconv"
 )
 

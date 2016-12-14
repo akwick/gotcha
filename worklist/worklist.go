@@ -2,9 +2,9 @@ package worklist
 
 import (
 	"fmt"
-	"goretech/analysis/lattice/taint"
-	"goretech/analysis/ssabuilder"
-	"goretech/analysis/transferFunction"
+	"github.com/akwick/gotcha/lattice/taint"
+	"github.com/akwick/gotcha/ssabuilder"
+	"github.com/akwick/gotcha/transferFunction"
 	"log"
 	"os"
 	"time"

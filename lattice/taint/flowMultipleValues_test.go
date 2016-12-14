@@ -1,4 +1,4 @@
-package taint 
+package taint
 
 import (
 	"testing"

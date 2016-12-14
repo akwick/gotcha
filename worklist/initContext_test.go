@@ -9,27 +9,27 @@ import (
 var src = []string{"../tests/exampleCode/hello.go"}
 
 func TestNumberElementsWorklist1(t *testing.T) {
-	mainFunc, _ := initSSAandPTA("goretech/analysis", src, "../sourcesAndSinks.txt", "")
+	mainFunc, _ := initSSAandPTA("github.com/akwick/gotcha", src, "../sourcesAndSinks.txt", "")
 	initContext(mainFunc)
 	assert.Equal(t, 2, worklist.Len())
 }
 
 func TestNumberValueContexts(t *testing.T) {
-	mainFunc, _ := initSSAandPTA("goretech/analysis", src, "../sourcesAndSinks.txt", "")
+	mainFunc, _ := initSSAandPTA("github.com/akwick/gotcha", src, "../sourcesAndSinks.txt", "")
 	initContext(mainFunc)
 	assert.Equal(t, 1, vcs.len())
 }
 
 // expect: 0 elements in transitions
 func TestNumberTransitions(t *testing.T) {
-	_, _ = initSSAandPTA("goretech/analysis", src, "../sourcesAndSinks.txt", "")
+	_, _ = initSSAandPTA("github.com/akwick/gotcha", src, "../sourcesAndSinks.txt", "")
 	initContext(mainFunc)
 	assert.Equal(t, 0, len(transitions))
 }
 
 //// expect: correct ssa instructions
 func TestElementsWorklist(t *testing.T) {
-	mainFunc, _ = initSSAandPTA("goretech/analysis", src, "../sourcesAndSinks.txt", "")
+	mainFunc, _ = initSSAandPTA("github.com/akwick/gotcha", src, "../sourcesAndSinks.txt", "")
 	initContext(mainFunc)
 	should := [...]string{
 		"\"Hello\":string + \" World\":string",
@@ -55,7 +55,7 @@ func TestElementsWorklist(t *testing.T) {
 func TestElementValueContext(t *testing.T) {
 	t.Skip()
 	// TODO Test must be changed due to the change to a map [acessing elements in order is not any longer possible.]
-	/*	mainFunc, _ := initSSAandPTA("goretech/analysis", src, "../sourcesAndSinks.txt")
+	/*	mainFunc, _ := initSSAandPTA("github.com/akwick/gotcha", src, "../sourcesAndSinks.txt")
 		initContext(mainFunc)
 		var shouldLattice lattice.Latticer
 		if isPointer {

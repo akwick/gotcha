@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+	<testsuite tests="0" failures="0" time="0.056" name="goretech/analysis/tests">
+		<properties>
+			<property name="go.version" value="go1.7.1"></property>
+			<property name="coverage.statements.pct" value="100.0"></property>
+		</properties>
+	</testsuite>
+</testsuites>

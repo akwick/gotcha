@@ -49,7 +49,7 @@ func TestGetSuccessors(t *testing.T) {
 		succs []succnode
 	}{
 		{
-			path: "goretech/analysis",
+			path: "github.com/akwick/gotcha",
 			src:  []string{"../tests/examplbeCode/hello2.go"},
 			succs: []succnode{
 				succnode{
@@ -135,7 +135,7 @@ func TestIdoms(t *testing.T) {
 		idoms []idomRes
 	}{
 		{
-			path: "goretech/analysis",
+			path: "github.com/akwick/gotcha",
 			src:  []string{"../tests/exampleCode/hello2.go"},
 			idoms: []idomRes{
 				idomRes{
@@ -157,7 +157,7 @@ func TestIdoms(t *testing.T) {
 				},
 			},
 		}, {
-			path: "goretech/analysis",
+			path: "github.com/akwick/gotcha",
 			src:  []string{"../tests/exampleCode/idom.go"},
 			idoms: []idomRes{
 				idomRes{

@@ -3,10 +3,10 @@ package worklist
 
 import (
 	"fmt"
+	"github.com/akwick/gotcha/lattice/taint"
+	"github.com/akwick/gotcha/ssabuilder"
 	"go/token"
 	"go/types"
-	"goretech/analysis/lattice/taint"
-	"goretech/analysis/ssabuilder"
 	"log"
 	"os"
 	"strings"

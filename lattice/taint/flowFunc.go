@@ -1,8 +1,8 @@
 package taint
 
 import (
-	"goretech/analysis/lattice"
-	"goretech/analysis/transferFunction"
+	"github.com/akwick/gotcha/lattice"
+	"github.com/akwick/gotcha/transferFunction"
 	"log"
 	"strconv"
 	"strings"
