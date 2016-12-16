@@ -1,9 +1,7 @@
 package taint
 
 import (
-	"fmt"
 	"go/types"
-	"strings"
 
 	"github.com/akwick/gotcha/lattice"
 	"github.com/akwick/gotcha/transferFunction"
@@ -184,10 +182,6 @@ func checkAndHandleSourcesAndsinks(c ssa.Instruction, l lattice.Latticer, ptr bo
 		return returnTainted
 	}
 	sink := isSink(callCom)
-	if strings.Contains(c.String(), "Query") {
-		a, b, c := getSignature(callCom)
-		fmt.Printf("a: %s\n b: %s\n c: %s\n", a, b, c)
-	}
 	if sink {
 		handleSinkDetection(callCom, l, ptr)
 	}

@@ -251,4 +251,5 @@ func TestChannelExample(t *testing.T) {
 
 	iterateWl(should, t)
 	assert.Equal(t, worklist.Len(), 0)
+	logging()
 }
