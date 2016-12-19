@@ -23,7 +23,7 @@ func g(s string) string {
 }
 
 func sink(s string) {
-	fmt.Printf("A gopher reaches a sink: %s \n", s)
+	fmt.Printf("An gopher reaches a sink: %s \n", s)
 }
 
 func source() string {
