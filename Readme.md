@@ -1,17 +1,8 @@
-# Run the default analysis
+# Gotcha - **Go T** aint **Ch** eck **A** nalysis
 
 ## Requierements
-3. Clone the repository to a folder you prefer: `$ git clone https://git.cased.de/git/ec-spride-sse-internal-goretech`
-0. Installed go with version >= 1.5
-1. If the `$GOPATH` is not set, then: export GOPATH=$HOME/go (this directory is your workspace, create it somewhere)
-2. `ln -s PATH_TO_GIT/goretech $GOPATH/src/goretech`  
-2. `$ cd $GOPATH/src/github.com/akwick/gotcha`
-8. add missing packages via go get
-  * `go get golang.org/x/tools/go/ssa`
-  * `go get github.com/stretchr/testify/assert`
-  * `go get github.com/pkg/errors`
-  * `go get github.com/smartystreets/goconvey/convey`
-  * if you want to debug: `$ go get github.com/mailgun/godebug`
+0. If the `$GOPATH` is not set, then: export GOPATH=$HOME/go (this directory is your workspace, create it somewhere)
+1. '' go get github.com/akwick/gotcha ``
 
 
 
