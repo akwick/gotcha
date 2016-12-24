@@ -55,3 +55,5 @@ The work was partially supported by the Norwegian-German bilateral PPP project
 GoRETech (GoRuntime Enforcement Techniques), the EU COST Action IC1402
 “ARVI—Runtime Verification Beyond Monitoring” and the EU project FP7-610582
 Envisage: Engineering Virtualized Services.
+
+Last but not least I want to thank [women who Go Berlin](https://www.meetup.com/de-DE/Women-Who-Go-Berlin/) for giving me the chance to visit the dotgo 2016. Thanks Vanesa for this great day full of awesome talks.
