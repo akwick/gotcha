@@ -30,7 +30,7 @@
 
 We have several tests which ensure some functionality of our analysis.
 The results are available via [Jenkins](https://envisage.ifi.uio.no:8080/jenkins/view/Vs-dev/job/GoRETech/)
-Are more detailed descriptions about running tests on your machine are in tests.md
+Are more detailed descriptions about running tests on your machine are in the file [*tests.md*](https://github.com/akwick/gotcha/blob/master/tests.md)
 
 # Debug the program
 
