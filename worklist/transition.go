@@ -20,7 +20,7 @@ type transition struct {
 func (t1 *Transition) Equal(t2 *Transition) bool {
 	equalContext := t1.context.Equal(t2.context)
 	equalTargetContext := t1.targetContext.Equal(t2.targetContext)
-	equalnode := t1.node == t1.node
+	equalnode := t1.node == t2.node
 	return equalContext && equalTargetContext && equalnode
 }
 
