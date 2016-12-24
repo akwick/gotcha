@@ -1,6 +1,6 @@
-# Gotcha - **Go T** aint **Ch** eck **A** nalysis
+# Gotcha - **Go T**aint **Ch**eck **A**nalysis
 
-## Requierements
+## Requirements
 0. If the `$GOPATH` is not set, then: export GOPATH=$HOME/go (this directory is your workspace, create it somewhere)
 1. '' go get github.com/akwick/gotcha ``
 
@@ -28,7 +28,7 @@
 
 # Test Results
 
-We have several tests which ensures some functionality of our analysis.
+We have several tests which ensure some functionality of our analysis.
 The results are available via [Jenkins](https://envisage.ifi.uio.no:8080/jenkins/view/Vs-dev/job/GoRETech/)
 Are more detailed descriptions about running tests on your machine are in tests.md
 
