@@ -1,5 +1,9 @@
 # Gotcha - **Go T**aint **Ch**eck **A**nalysis
 
+![](./images/gotcha.png)
+[0 ]
+
+
 Some theoretical background about this repository is available in our paper:
 [Information Flow Analysis for Go](http://link.springer.com/chapter/10.1007/978-3-319-47166-2_30).
 For more information about the project, also check the Acknowledgments.
@@ -57,3 +61,5 @@ GoRETech (GoRuntime Enforcement Techniques), the EU COST Action IC1402
 Envisage: Engineering Virtualized Services.
 
 Last but not least I want to thank [women who Go Berlin](https://www.meetup.com/de-DE/Women-Who-Go-Berlin/) for giving me the chance to visit the dotgo 2016. Thanks Vanesa for this great day full of awesome talks.
+
+[0 ] This image is created by Anna-Katharina Wickert under [Creative Commons 3.0 license](https://creativecommons.org/licenses/by/3.0/) based on Renee French under Creative Commons 3.0 Attributions. 
