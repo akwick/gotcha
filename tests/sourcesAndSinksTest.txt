@@ -47,9 +47,9 @@ I<func(r io.Reader) (int64, error); ReadFrom> -> _SOURCE_
 I<func() (rune, int, error); ReadRune> -> _SOURCE_
 I<func() (string); ReadDir> -> _SOURCE_
 % only for testing
-<func() string; goretech/analysis.source> -> _SOURCE_
-<func() *string; goretech/analysis.source> -> _SOURCE_
-<func(s string) ; goretech/analysis.sink> -> _SINK_
-<func(s *string) ; goretech/analysis.sink> -> _SINK_
+<func() string; github.com/akwick/gotcha.source> -> _SOURCE_
+<func() *string; github.com/akwick/gotcha.source> -> _SOURCE_
+<func(s string) ; github.com/akwick/gotcha.sink> -> _SINK_
+<func(s *string) ; github.com/akwick/gotcha.sink> -> _SINK_
 % for testing htcat
 <func(ref string) (*net/url.URL, error); net/url.Parse> -> _SOURCE_
