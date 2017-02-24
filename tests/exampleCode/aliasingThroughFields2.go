@@ -31,7 +31,9 @@ func main() {
 	x.u = t
 	y.v = t
 
+	// @ExpectFlow: true
 	sink(x.u.s)
+	// @ExpectFlow: true
 	sink(y.v.s)
 }
 
