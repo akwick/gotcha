@@ -3,6 +3,7 @@ package taint
 import (
 	"bufio"
 	"errors"
+	"log"
 	"os"
 	"strings"
 )
@@ -41,13 +42,11 @@ var Sources = make([]*Data, 0)
 // Read the file with the sources and sinks
 func Read(fileName string) error {
 	file, err := os.Open(fileName)
+	defer file.Close()
 	if err != nil {
+		log.Print(err)
 		return err
 	}
-	//log.Printf("Read file: %s\n", fileName)
-	defer file.Close()
-	//	Sinks := make([]*TaintData, 0)
-	//	Sources := make([]*TaintData, 0)
 
 	scanner := bufio.NewScanner(file)
 	scanner.Split(bufio.ScanLines)

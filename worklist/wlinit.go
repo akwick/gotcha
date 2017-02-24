@@ -39,7 +39,10 @@ func initSSAandPTA(path string, sourcefiles []string, sourceAndSinkFile string, 
 	ccsPool = make([]*ContextCallSite, 0)
 	transitions = make([]*Transition, 0)
 	// Initialize the Sources and Sinks Slices with the help of the sources and sinks file
-	taint.Read(sourceAndSinkFile)
+	err = taint.Read(sourceAndSinkFile)
+	if err != nil {
+		return nil, errors.Wrap(err, "Error reading source and sink file")
+	}
 	log.Printf("sources: %v\n", taint.Sources)
 	log.Printf("sinks: %v\n", taint.Sinks)
 
@@ -227,6 +230,7 @@ func wlInit(path string, sourcefiles []string, sourceAndSinkFile string, allpack
 	mainFunc, err = initSSAandPTA(path, sourcefiles, sourceAndSinkFile, pkgs)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err.Error())
+		// a call to os.Exit(1) follows -> exit of program
 		log.Fatalf("Fatal error: %s\n", err.Error())
 	}
 	initContext(mainFunc)
