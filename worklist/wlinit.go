@@ -24,25 +24,18 @@ var contextpkgs []*ssa.Package
 //Initializations
 func initSSAandPTA(path string, sourcefiles []string, sourceAndSinkFile string, pkgs string) (*ssa.Function, error) {
 	// First generating a ssa with source code to get the main function
-	//log.Printf("sourcefile: %s\n", sourcefiles[0])
 	mainpkg, err := ssabuilder.Build(path, sourcefiles)
-	if err != nil {
-		return nil, err
-	}
+	handleError(err, "ssa build failed")
 	mainpkg.Build()
 	mainFunc = mainpkg.Func("main")
-	if mainFunc == nil {
-		return nil, errors.New("no main() function found!")
-	}
+	handleError(errors.New("no main() function found!"), "")
 	vcs = &VCS{ctx: make(map[VcIdentifier]*ValueContext, 0)}
 	worklist = NewWlList()
 	ccsPool = make([]*ContextCallSite, 0)
 	transitions = make([]*Transition, 0)
 	// Initialize the Sources and Sinks Slices with the help of the sources and sinks file
 	err = taint.Read(sourceAndSinkFile)
-	if err != nil {
-		return nil, errors.Wrap(err, "Error reading source and sink file")
-	}
+	handleError(err, "reading source and sink file failed")
 	log.Printf("sources: %v\n", taint.Sources)
 	log.Printf("sinks: %v\n", taint.Sinks)
 
@@ -75,15 +68,20 @@ func initSSAandPTA(path string, sourcefiles []string, sourceAndSinkFile string, 
 	// pointer analysis needs a package with a main function
 	setupPTA([]*ssa.Package{mainpkg})
 	pta, err = pointer.Analyze(conf)
-	if err != nil {
-		return nil, errors.Wrap(err, "")
-	}
+	handleError(err, "pointer analysis failed")
 	setPtrMap([]*ssa.Package{mainpkg})
 
 	// Replace ssa.Send with Send
 	ssabuilder.ReplaceSend(contextpkgs)
 
 	return mainFunc, nil
+}
+
+func handleError(e error, msg string) error {
+	if e != nil {
+		e = errors.Wrap(e, msg)
+	}
+	return e
 }
 
 func initContext(ssaFun *ssa.Function) {

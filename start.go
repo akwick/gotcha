@@ -4,9 +4,10 @@ import (
 	"errors"
 	"flag"
 	"fmt"
-	"github.com/akwick/gotcha/worklist"
 	"os"
 	"strings"
+
+	"github.com/akwick/gotcha/worklist"
 )
 
 func main() {
