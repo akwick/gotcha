@@ -1,9 +1,9 @@
 package tests
 
 import (
-	"goretech/analysis/worklist"
 	"testing"
 
+	"github.com/akwick/gotcha/worklist"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -32,7 +32,7 @@ func check(testData []*testDataStruct, t *testing.T) {
 }
 
 var taintFile = "./sourcesAndSinksTest.txt"
-var path = "goretech/analysis"
+var path = "github.com/akwick/gotcha"
 
 type testDataStruct struct {
 	sourceFile    []string

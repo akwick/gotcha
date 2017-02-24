@@ -11,6 +11,7 @@ func main() {
 
 func f(ch chan string) {
 	y := <-ch
+	// @ExpectedFlow: true
 	sink(y) // sink, leak
 }
 

@@ -1,16 +1,16 @@
 # Jenkins
 
-We have a [Jenkins CI:](https://envisage.ifi.uio.no:8080/jenkins/view/Vs-dev/job/GoRETech/) which shows the statics of our testcases. 
+We have a [Jenkins CI:](https://envisage.ifi.uio.no:8080/jenkins/view/Vs-dev/job/GoRETech/) which shows the statics of our testcases.
 
 
 # How to run tests on your local machine
 
-We assume that you have installed Go correctly and are in the directory: '$GOPATH/src/goretech/analysis'.
+We assume that you have installed Go correctly and are in the directory: '$GOPATH/src/github.com/akwick/gotcha'.
 More details about the installation is in the RunAnalysis.md file.
 
 ## Run all tests
 
-We have a script which runs all the test packages from the goretech/analysis directory.
+We have a script which runs all the test packages from the github.com/akwick/gotcha directory.
 Ensure that the file (test.sh) has the executable flag. If not use chmod to change the flags.
 
 ```
@@ -28,7 +28,7 @@ $ go test
 
 ## Run only one special test case
 
-If you want to run only one special test case in one package, you have to add the -run parameter to the go test command. The Argument of the parameter is the name of the test case. The tool runs all tests which match to the argument. 
+If you want to run only one special test case in one package, you have to add the -run parameter to the go test command. The Argument of the parameter is the name of the test case. The tool runs all tests which match to the argument.
 
 ```
 $ cd tests
@@ -50,7 +50,7 @@ It is easy to find the start of a convey tests, because it starts with a colorfu
 ## Annotations in the example files
 
 In some of our examples we will use annotations to illustrate the expected report of gotcha.
-The annoations should be above a function which is in the set of sinks being the function sink(s string) in most of the cases. 
+The annoations should be above a function which is in the set of sinks being the function sink(s string) in most of the cases.
 
 * `@ExpectedFlow: true` : We expect gotcha to report a flow
 * `@ExpectedFlow: false` : We do not expect gotcha to report a flow

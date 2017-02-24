@@ -10,7 +10,7 @@ import (
 
 func TestNoOutput(t *testing.T) {
 	build(t)
-	out, err := exec.Command("../analysis", "-src=./exampleCode/hello.go").CombinedOutput()
+	out, err := exec.Command("../gotcha", "-src=./exampleCode/hello.go").CombinedOutput()
 	assert.Nil(t, err)
 	outS := string(out)
 	assert.Equal(t, outS, "")
@@ -21,7 +21,7 @@ func TestNoOutput(t *testing.T) {
 // b) The help message contains the three flags (-path, -src, -ssf)
 func TestOutput_missingSrcFlag(t *testing.T) {
 	build(t)
-	out, err := exec.Command("../analysis", "").CombinedOutput()
+	out, err := exec.Command("../gotcha", "").CombinedOutput()
 	assert.Nil(t, err)
 	outS := string(out)
 	assert.Contains(t, outS, "-path")
@@ -36,7 +36,7 @@ func build(t *testing.T) {
 	gopath := os.Getenv("GOPATH")
 	assert.NotEmpty(t, gopath, "")
 	cmd := exec.Command("go", "build")
-	dir := gopath + "/src/goretech/analysis"
+	dir := gopath + "/src/github.com/akwick/gotcha"
 	cmd.Dir = dir
 	err := cmd.Start()
 	if !assert.Nil(t, err) {

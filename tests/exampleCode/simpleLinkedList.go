@@ -1,7 +1,7 @@
 package main
 
 import (
-	"goretech/analysis/tests/exampleCode/h"
+	"github.com/akwick/gotcha/tests/exampleCode/h"
 )
 
 func main() {
