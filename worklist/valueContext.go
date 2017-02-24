@@ -1,10 +1,11 @@
 package worklist
 
 import (
-	"github.com/akwick/gotcha/lattice"
-	"github.com/akwick/gotcha/lattice/taint"
 	"log"
 	"strconv"
+
+	"github.com/akwick/gotcha/lattice"
+	"github.com/akwick/gotcha/lattice/taint"
 
 	"github.com/pkg/errors"
 
@@ -79,7 +80,6 @@ func (v *ValueContext) String() string {
 // If the context is already known, the function returns the known context.
 // If a new context is created, the in lattice will be set.
 func GetValueContext(callee *ssa.Function, pcaller []ssa.Value, lcaller lattice.Latticer, isClosure bool) (*ValueContext, error) {
-	_ = "breakpoint"
 	if callee == nil {
 		return nil, errors.New("don't expect nil as callee in function GetValueContext")
 	}
@@ -121,7 +121,6 @@ func GetValueContext(callee *ssa.Function, pcaller []ssa.Value, lcaller lattice.
 		}
 	}
 
-	_ = "breakpoint"
 	// we don't found context -> create a new context
 	// add context to context list and initialize the context
 	vc := newValueContext(callee)

@@ -3,13 +3,14 @@ package worklist
 
 import (
 	"fmt"
-	"github.com/akwick/gotcha/lattice/taint"
-	"github.com/akwick/gotcha/ssabuilder"
 	"go/token"
 	"go/types"
 	"log"
 	"os"
 	"strings"
+
+	"github.com/akwick/gotcha/lattice/taint"
+	"github.com/akwick/gotcha/ssabuilder"
 
 	"github.com/pkg/errors"
 	"golang.org/x/tools/go/pointer"
@@ -39,7 +40,8 @@ func initSSAandPTA(path string, sourcefiles []string, sourceAndSinkFile string, 
 	transitions = make([]*Transition, 0)
 	// Initialize the Sources and Sinks Slices with the help of the sources and sinks file
 	taint.Read(sourceAndSinkFile)
-	log.Printf("sources: %v", taint.Sources)
+	log.Printf("sources: %v\n", taint.Sources)
+	log.Printf("sinks: %v\n", taint.Sinks)
 
 	// Add only the packages which are defined by the arguemnts
 	// Flag allpkgs analyze all possible packages. If the flag is not set, it could be that a certain amound of packages are defined in pkgs.
