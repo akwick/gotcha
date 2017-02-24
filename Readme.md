@@ -9,8 +9,12 @@ Some theoretical background about this repository is available in our paper:
 For more information about the project, also check the Acknowledgments.
 
 ## Requirements
-0. If the `$GOPATH` is not set, then: export GOPATH=$HOME/go (this directory is your workspace, create it somewhere)
-1. '' go get github.com/akwick/gotcha ``
+
+0. [Installation of Go](https://golang.org/doc/install)
+1. Go version below 1.8
+   - Ensure that you have set the `$GOPATH`
+   - Set the `$GOPATH` e.g. with `export GOPATH=$HOME/go` on a unix machine 
+1. `go get github.com/akwick/gotcha`
 
 
 
@@ -27,11 +31,14 @@ For more information about the project, also check the Acknowledgments.
 2. The default parameter are:
   - path = github.com/akwick/gotcha
     - It is important to change the path if you are not running our examples.   
-
   - ssf = ./sourcesAndSinks.txt
+    - Adopt this parameter if you want to use your own souces and sinks file
   - allpkgs = false
+    - Analyse all packages 
   - pkgs = ""  
-  - ptr = true    
+    - Only analyse the defined packages
+  - ptr = true  
+    - Analyse the program with the additional pointer analysis
 3. `./analysis -h` prints a short help for the flags.  
 
 # Test Results
