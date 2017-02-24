@@ -40,3 +40,10 @@ func TestFunctionAsParameter(t *testing.T) {
 	testData := []*testDataStruct{t1}
 	check(testData, t)
 }
+
+func TestAliasingThroughFields(t *testing.T) {
+	t1 := &testDataStruct{[]string{"./exampleCode/aliasingThroughFields.go"}, 2}
+	t2 := &testDataStruct{[]string{"./exampleCode/aliasingThroughFields2.go"}, 2}
+	testData := []*testDataStruct{t1, t2}
+	check(testData, t)
+}
