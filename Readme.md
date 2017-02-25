@@ -25,6 +25,19 @@ This can be done in a similar way: start a golang container and within this cont
 0. cd $GOPATH/src/github.com/akwick/gotcha
 1. go build
 
+### Working in your own fork
+
+Working with your own fork of a Go-project is _exciting_ because Go packages
+always have fully qualified imports of the form "github.com/akwick/gotcha/foo".
+To avoid renaming imports (and having to patch them back before merging), the
+following should work:
+
+0. Have $GOPATH configured
+1. cd $GOPATH
+2. mkdir -p src/github.com/akwick
+3. cd src/github.com/akwick
+4. git clone your:repo/gotcha (or ln -s path/to/gotcha .)
+
 ## Run the analysis
 
 0. ./analysis -path="path to go-files as relative part from $GOPATH/src" -src="path to source code file which should analyzed" -ssf="path to the sources and sinks file"
