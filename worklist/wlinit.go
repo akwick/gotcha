@@ -56,7 +56,8 @@ func initSSAandPTA(path string, sourcefiles []string, sourceAndSinkFile string, 
 				if p != nil {
 					contextpkgs = append(contextpkgs, p)
 				} else {
-					fmt.Printf("Pkg [%s] is unknown in %s", pkg, mainFunc.String())
+					log.Printf("Pkg [%s] is unknown in %s", pkg, mainFunc.String())
+					handleError(errors.New("Pkg ["+pkg+"] is unknown in "+mainFunc.String()), "")
 				}
 			}
 		}

@@ -95,6 +95,13 @@ func Read(fileName string) error {
 			}
 		}
 	}
+	// Returning an error if either no source or sink is defined
+	if len(Sources) == 0 {
+		return errors.New("the provided file does not contain a valid source signature")
+	}
+	if len(Sinks) == 0 {
+		return errors.New("the provided file does not contain a valid sink signature")
+	}
 	return nil
 }
 
