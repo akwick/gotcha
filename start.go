@@ -43,6 +43,11 @@ func main() {
 				os.Exit(1)
 			}
 		} else {
+			fmt.Printf("Gongrats. Gotcha has not found an error.\n")
+			fmt.Printf("Your parameters are: \n")
+			fmt.Printf("path: %s\n", *path)
+			fmt.Printf("source file: %s\n", sourceFilesFlag)
+			fmt.Printf("sources and sinks file: %s\n", *ssf)
 			os.Exit(0)
 		}
 	}

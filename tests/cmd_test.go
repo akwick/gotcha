@@ -13,7 +13,8 @@ func TestNoOutput(t *testing.T) {
 	out, err := exec.Command("../gotcha", "-src=./exampleCode/hello.go").CombinedOutput()
 	assert.Nil(t, err)
 	outS := string(out)
-	assert.Equal(t, outS, "")
+	assert.Contains(t, outS, "./exampleCode/hello.go")
+	assert.Contains(t, outS, "./sourcesAndSinks.txt")
 }
 
 // Test that:
