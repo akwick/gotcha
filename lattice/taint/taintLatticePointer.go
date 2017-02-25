@@ -158,7 +158,6 @@ func (l1 *LatticePointer) GetSSAValMayAlias(v ssa.Value) []ssa.Value {
 //Semanticer interface
 
 func (l1 *LatticePointer) TransferFunction(node ssa.Instruction, ptr *pointer.Result) transferFunction.PlainFF {
-	lupVal = Uninitialized
 	switch nType := node.(type) {
 	case *ssa.UnOp:
 		if nType.Op != token.MUL && nType.Op != token.ARROW {
