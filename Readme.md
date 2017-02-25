@@ -8,7 +8,7 @@ Some theoretical background about this repository is available in our paper:
 [Information Flow Analysis for Go](http://link.springer.com/chapter/10.1007/978-3-319-47166-2_30).
 For more information about the project, also check the Acknowledgments.
 
-## Requirements
+## Requirements and Installation of gotcha on your local machine
 
 0. [Installation of Go](https://golang.org/doc/install)
 1. Go version below 1.8
@@ -16,6 +16,8 @@ For more information about the project, also check the Acknowledgments.
    - Set the `$GOPATH` e.g. with `export GOPATH=$HOME/go` on a unix machine 
 1. `go get github.com/akwick/gotcha`
 
+Another variant is to install gotcha in a docker image. 
+This can be done in a similar way: start a golang container and within this container execute the go get command (step 2). 
 
 
 ## Build the analysis
@@ -40,6 +42,7 @@ For more information about the project, also check the Acknowledgments.
   - ptr = true  
     - Analyse the program with the additional pointer analysis
 3. `./analysis -h` prints a short help for the flags.  
+
 
 # Test Results
 
