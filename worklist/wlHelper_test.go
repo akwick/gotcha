@@ -1,12 +1,12 @@
 package worklist
 
 import (
-	"goretech/tools/ssaHelper"
 	"strconv"
 	"testing"
 
 	"golang.org/x/tools/go/ssa"
 
+	"github.com/akwick/gotcha/ssabuilder"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -116,7 +116,7 @@ func TestGetSuccessors(t *testing.T) {
 		},
 	}
 	for _ = range tests {
-		/*		helper, err := ssaHelper.NewSsaHelper(test.path, test.src)
+		/*		helper, err := ssabuilder.NewSsaHelper(test.path, test.src)
 				if assert.Nil(t, err) {
 					mainPkg := helper.GetMainPackage()
 					mainPkg.Build()
@@ -194,7 +194,7 @@ func TestIdoms(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		helper, err := ssaHelper.NewSsaHelper(test.path, test.src)
+		helper, err := ssabuilder.NewSsaHelper(test.path, test.src)
 		if assert.Nil(t, err) {
 			mainPkg := helper.GetMainPackage()
 			mainPkg.Build()
