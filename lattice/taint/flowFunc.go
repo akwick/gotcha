@@ -29,19 +29,21 @@ func returnTainted(currentValue lattice.Valuer) (lattice.Valuer, error) {
 	return Tainted, nil
 }
 
-func returnLUP(currentValue lattice.Valuer) (lattice.Valuer, error) {
-	return currentValue.LeastUpperBound(lupVal)
+func returnLUP(lupVal lattice.Valuer) func (lattice.Valuer) (lattice.Valuer, error) {
+	return func (currentValue lattice.Valuer)(lattice.Valuer, error) { return currentValue.LeastUpperBound(lupVal) }
 }
 
 // returnLUPTaint is similar to returnLUP.
 // In contrast to returnLUP, returnLUPTaint can handle error messages.
 // An information flow is packed into the ErrInFlow struct which implements the error interface.
-func returnLUPTaint(currentValue lattice.Valuer) (lattice.Valuer, error) {
+func returnLUPTaint (lupVal lattice.Valuer) func (lattice.Valuer) (lattice.Valuer, error) {
+     return func (currentValue lattice.Valuer) (lattice.Valuer, error) {
 	tempVal, errCall := currentValue.LeastUpperBound(lupVal)
 	if errCall != nil {
 		return lupVal, errCall
 	}
 	return tempVal, err
+     }
 }
 
 func returnError(currentValue lattice.Valuer) (lattice.Valuer, error) {
@@ -89,9 +91,6 @@ func NewErrInFlow(c *ssa.CallCommon, a []ssa.Value, e error) error {
 	return ErrLeak{Call: *c, Args: a, Err: e}
 }
 
-var retLatValuer, lupValTmp, lupValTmp2, lupnTypeValues, lup3Val lattice.Valuer
-var lupVal lattice.Valuer
-
 //var taint = false
 var err error
 
@@ -100,7 +99,6 @@ var err error
 func (l Lattice) TransferFunction(node ssa.Instruction, ptr *pointer.Result) transferFunction.PlainFF {
 	// Handling the different possibilities for a ssa.Instruction
 	//log.Printf("ptr is nil %t", ptr == nil)
-	lupVal = Uninitialized
 	switch nType := node.(type) {
 	// Handle all cases which returns only the id
 	// *ssa.MakeClosure returns only the id, becuase it's a ~function~ call which creates a new context
@@ -150,8 +148,7 @@ func (l Lattice) TransferFunction(node ssa.Instruction, ptr *pointer.Result) tra
 					return ptrUnOp(xType, l, ptr)
 				} */
 		}
-		lupVal = l.GetVal(valX)
-		return returnLUP
+		return returnLUP(l.GetVal(valX))
 		// Handle the cases which operates on two ssa.Values
 	case *ssa.BinOp, *ssa.IndexAddr, *ssa.Lookup:
 		var val1, val2 ssa.Value
@@ -168,11 +165,11 @@ func (l Lattice) TransferFunction(node ssa.Instruction, ptr *pointer.Result) tra
 		}
 		lVal1 := l.GetVal(val1)
 		lVal2 := l.GetVal(val2)
+		var retLatValuer lattice.Valuer
 		if retLatValuer, err = lVal1.LeastUpperBound(lVal2); err != nil {
 			return returnError
 		}
-		lupVal = retLatValuer.(Value)
-		return returnLUP
+		return returnLUP(retLatValuer.(Value))
 		// Handle the cases which operates upon an slice
 	case *ssa.Phi:
 		valArr := nType.Edges
@@ -184,8 +181,7 @@ func (l Lattice) TransferFunction(node ssa.Instruction, ptr *pointer.Result) tra
 				return returnError
 			}
 		}
-		lupVal = v.(Value)
-		return returnLUP
+		return returnLUP(v.(Value))
 		// Hande the case with three ssa.Values
 	case *ssa.MapUpdate:
 		// updates a values in Map[Key] to value
@@ -200,11 +196,11 @@ func (l Lattice) TransferFunction(node ssa.Instruction, ptr *pointer.Result) tra
 			return returnError
 		}
 		lValValue := l.GetVal(valValue)
+		var lup3Val lattice.Valuer
 		if lup3Val, err = lValValue.LeastUpperBound(lupMapKey); err != nil {
 			return returnError
 		}
-		lupVal = lup3Val.(Value)
-		return returnLUP
+		return returnLUP(lup3Val.(Value))
 		// Handle calls
 	case *ssa.Call, *ssa.Defer, *ssa.Go:
 		ff := checkAndHandleSourcesAndsinks(node, l, false)
@@ -227,8 +223,7 @@ func (l Lattice) TransferFunction(node ssa.Instruction, ptr *pointer.Result) tra
 		//log.Printf("ssa.Store \n")
 		//log.Printf("  Addr: %s | Value: %s\n", nType.Addr, nType.Val)
 		value := nType.Val
-		lupVal = l.GetVal(value)
-		return returnLUP
+		return returnLUP(l.GetVal(value))
 	default:
 		return returnID
 	}

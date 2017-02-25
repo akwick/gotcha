@@ -85,7 +85,7 @@ func LUPOverLabels(ptstoset pointer.PointsToSet, l Lattice) (val Value, e error)
 
 func ptrUnOp(e *ssa.UnOp, l lattice.Pter, ptr *pointer.Result) transferFunction.PlainFF {
 	value := e.X
-	lupVal = l.GetVal(e.X)
+	lupVal := l.GetVal(e.X)
 
 	if ptr != nil {
 		if ok, valr := IsPointerVal(value); ok {
@@ -116,7 +116,7 @@ func ptrUnOp(e *ssa.UnOp, l lattice.Pter, ptr *pointer.Result) transferFunction.
 			}
 		}
 	}
-	return returnLUP
+	return returnLUP(lupVal)
 }
 
 func setAllPointsTo(val lattice.Valuer, l lattice.Latticer, ptss pointer.PointsToSet) {
@@ -176,7 +176,7 @@ func checkAndHandleSourcesAndsinks(c ssa.Instruction, l lattice.Latticer, ptr bo
 		return nil
 	}
 	// Get the lup of the value
-	lupVal = l.GetVal(callCom.Value)
+	lupVal := l.GetVal(callCom.Value)
 	source := isSource(callCom)
 	if source {
 		return returnTainted
@@ -187,7 +187,7 @@ func checkAndHandleSourcesAndsinks(c ssa.Instruction, l lattice.Latticer, ptr bo
 	}
 
 	if err != nil {
-		return returnLUPTaint
+		return returnLUPTaint(lupVal)
 	}
 
 	return nil
