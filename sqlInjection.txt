@@ -5,6 +5,7 @@
 % Sources of the flag package
 <func(i int) string; flag.Arg> -> _SOURCE_
 <func() []string; flag.Args> -> _SOURCE_
+<func() ; flag.Parse> -> _SOURCE_
 % Sources of the bufio package
 <func() (byte, error); bufio.ReadByte> -> _SOURCE_
 <func(delim byte) ([]byte, error); bufio.ReadBytes> -> _SOURCE_
