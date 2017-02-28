@@ -3,8 +3,6 @@
 <func(query string, args ...interface{}) (database/sql.Rows, error); database/sql.Query> -> _SINK_
 <func(query string, args ...interface{}) database/sql.Rows; database/sql.QueryRow> -> _SINK_
 % Sources of the flag package
-<func(i int) string; flag.Arg> -> _SOURCE_
-<func() []string; flag.Args> -> _SOURCE_
 <func() ; flag.Parse> -> _SOURCE_
 % Sources of the bufio package
 <func() (byte, error); bufio.ReadByte> -> _SOURCE_
