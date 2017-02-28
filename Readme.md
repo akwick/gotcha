@@ -1,6 +1,6 @@
 # Gotcha - **Go T**aint **Ch**eck **A**nalysis
 
-![](./images/gotcha.png)
+![](./images/gotcha_400x303.png)
 [0 ]
 
 
