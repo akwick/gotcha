@@ -34,7 +34,7 @@ func TestPointerAsParameterCall(t *testing.T) {
 }
 
 func TestFunctionAsParameter(t *testing.T) {
-	// TODO implement feature such that the tool can handle functions as a parameter tool
+	// TODO implement feature such that the tool can handle functions as a parameter too
 	//	t1 := &testDataStruct{[]string{"./exampleCode/pointerToFunc.go"}, 1}
 	t1 := &testDataStruct{[]string{"./exampleCode/pointerToFunc.go"}, 0}
 	testData := []*testDataStruct{t1}
