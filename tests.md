@@ -52,5 +52,5 @@ It is easy to find the start of a convey tests, because it starts with a colorfu
 In some of our examples we will use annotations to illustrate the expected report of gotcha.
 The annoations should be above a function which is in the set of sinks being the function sink(s string) in most of the cases.
 
-* `@ExpectedFlow: true` : We expect gotcha to report a flow
-* `@ExpectedFlow: false` : We do not expect gotcha to report a flow
+* `@expectedflow: true` : We expect gotcha to report a flow
+* `@expectedflow: false` : We do not expect gotcha to report a flow
