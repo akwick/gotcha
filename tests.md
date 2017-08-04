@@ -1,12 +1,20 @@
 # Jenkins
 
-We have a [Jenkins CI:](https://envisage.ifi.uio.no:8080/jenkins/view/Vs-dev/job/GoRETech/) which shows the statics of our testcases.
+We have a [Jenkins CI:](https://envisage.ifi.uio.no:8080/jenkins/view/go test github.com/akwick/gotcha/tests github.com/akwick/gotcha/worklist github.com/akwick/gotcha/lattice/taint
+Vs-dev/job/GoRETech/) which shows the statics of our testcases.
 
 
 # How to run tests on your local machine
 
-We assume that you have installed Go correctly and are in the directory: '$GOPATH/src/github.com/akwick/gotcha'.
-More details about the installation is in the RunAnalysis.md file.
+## Installations Requirements
+
+First, we assume that you have installed Go correctly on your machine. 
+For testing, we use two additional packages (testify/assert and goconvey/convey). One can install bothpackages with the corresponding go get commands:
+
+```
+go get github.com/stretchr/testify/assert
+go get github.com/smartystreets/goconvey/convey
+```
 
 ## Run all tests
 
@@ -14,8 +22,15 @@ We have a script which runs all the test packages from the github.com/akwick/got
 Ensure that the file (test.sh) has the executable flag. If not use chmod to change the flags.
 
 ```
-$.\test.sh
+$.\tests.sh
 ```
+
+An alternative is to run the corresponding go command from the script:
+
+```
+go test github.com/akwick/gotcha/tests github.com/akwick/gotcha/worklist github.com/akwick/gotcha/lattice/taint
+```
+
 
 ## Run only one package
 
@@ -25,7 +40,7 @@ If you want to run only tests from one package, you should change into that dire
 $ cd tests
 $ go test
 ```
-
+The alternative is to use the following command:
 ## Run only one special test case
 
 If you want to run only one special test case in one package, you have to add the -run parameter to the go test command. The Argument of the parameter is the name of the test case. The tool runs all tests which match to the argument.
@@ -52,5 +67,5 @@ It is easy to find the start of a convey tests, because it starts with a colorfu
 In some of our examples we will use annotations to illustrate the expected report of gotcha.
 The annoations should be above a function which is in the set of sinks being the function sink(s string) in most of the cases.
 
-* `@ExpectedFlow: true` : We expect gotcha to report a flow
-* `@ExpectedFlow: false` : We do not expect gotcha to report a flow
+* `@expectedflow: true` : We expect gotcha to report a flow
+* `@expectedflow: false` : We do not expect gotcha to report a flow
