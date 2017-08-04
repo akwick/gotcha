@@ -13,6 +13,7 @@ func main() {
 	t := new(T)
 	t.s = source()
 	t.t = "Hello World"
+	// @expectedflow: false
 	sink(t.t) // sink, no leak
 }
 

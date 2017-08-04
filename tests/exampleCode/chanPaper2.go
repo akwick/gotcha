@@ -5,6 +5,7 @@ func main() {
 	x := "Hello World"
 	ch := make(chan string)
 	f(ch)
+	// @expectedflow: false
 	sink(x)
 	x = source()
 	ch <- x
@@ -14,7 +15,7 @@ func f(ch chan string) {
 	// *ssa.MakeClosure
 	go func() {
 		y := <-ch
-		// A flow should be reported
+		// @expectedflow: true
 		sink(y)
 	}()
 }

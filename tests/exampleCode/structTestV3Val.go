@@ -14,6 +14,7 @@ func main() {
 
 	u := new(T)
 	u.s = "Hello World"
+	// @expectedflow: false
 	sink(u.s) // sink, no leak
 
 	a(*u) // u is untainted

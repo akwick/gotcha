@@ -3,14 +3,14 @@ package main
 func main() {
 	var s string
 	s = source()
-	// should be reported
+	// @expectedflow: true
 	sink(s)
 	s = "Hello World"
-	// shouldn't reported
+	// @expectedflow: false
 	sink(s)
 	s = source()
-	// shouldn't be analyzed a second time
-	sink(s)
+	// @expecteflow: true
+	sink(s) // should not create a new context
 }
 func sink(s string) {
 }

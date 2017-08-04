@@ -9,8 +9,17 @@ func main() {
 	l.AddData("Gophers are welcome")
 	l.AddData(tainted)
 
-	for i := 0; i < 4; i++ {
-		s := l.GetData(i)
-		h.Sink(s) // sink, no leak if i%2==0, leak if i%2 == 1
-	}
+	s := l.GetData(0)
+	// @expectedflow: true
+	h.Sink(s)
+	s := l.GetData(2)
+	// @expectedflow: true
+	h.Sink(s)
+	s := l.GetData(1)
+	// @expectedflow: false
+	h.Sink(s)
+	s := l.GetData(3)
+	// @expectedflow: false
+	h.Sink(s)
+
 }

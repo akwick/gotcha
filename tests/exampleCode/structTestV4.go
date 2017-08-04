@@ -12,16 +12,20 @@ type T struct {
 func main() {
 	t := new(T)
 	t.s = source()
+	// @expectedflow: true
 	sink(t.s) // sink, leak
 
 	u := new(T)
 	u.s = "Hello World"
+	// @expectedflow: false
 	sink(u.s) // sink, no leak
 
 	v := t.s
+	// @expectedflow: true
 	sink(v) // sink, leak
 
 	w := u.s
+	// @expectedflow: false
 	sink(w) // sink, no leak
 }
 

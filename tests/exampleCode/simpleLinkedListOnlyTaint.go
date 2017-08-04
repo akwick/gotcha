@@ -6,6 +6,7 @@ func main() {
 
 	s0 := l.GetData(0) // tainted
 
+	// @expectedFlow: true
 	sink(s0) // sink, leak
 }
 

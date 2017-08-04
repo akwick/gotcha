@@ -9,7 +9,9 @@ func main() {
 	s0 := l.GetData(0) // untainted
 	s1 := l.GetData(1) // tainted
 
+	// @expectedflow: false
 	sink(s0) // sink, no leak
+	// @expectedflow: true
 	sink(s1) // sink, leak
 }
 

@@ -11,10 +11,12 @@ func f(ch chan string) {
 	// *ssa.MakeClosure
 	go func() {
 		y := <-ch
+		// @expectedflow: true
 		sink(y) // sink, leak
 	}()
 	x = source()
 	ch <- x
+	// @expectedflow: true
 	sink(x) // sink, leak
 }
 

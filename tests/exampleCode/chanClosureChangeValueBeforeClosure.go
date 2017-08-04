@@ -13,10 +13,11 @@ func f(ch chan string) {
 	// *ssa.MakeClosure
 	go func() {
 		y := <-ch
-		// A flow should be reported
+		// @expectedflow: true
 		sink(y)
 	}()
-	sink(x) // sink, leak
+	// @expectedflow: true
+	sink(x)
 }
 
 func sink(s string) {

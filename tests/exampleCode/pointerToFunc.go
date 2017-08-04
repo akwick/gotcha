@@ -1,6 +1,8 @@
 package main
 
 func main() {
+	// The tool currently does not handle function arguments
+	// @expectedflow: false
 	sink(source)
 }
 

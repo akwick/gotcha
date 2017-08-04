@@ -6,6 +6,7 @@ func main() {
 	x := "Hello World"
 	ch := make(chan string)
 	go f(ch)
+	// @expectedflow: false
 	sink(x) // sink, no leak
 	x = secret()
 	ch <- x
@@ -13,6 +14,7 @@ func main() {
 
 func f(ch chan string) {
 	y := <-ch
+	// @expectedflow: true
 	sink(y) // sink, leak
 }
 

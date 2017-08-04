@@ -3,6 +3,7 @@ package main
 func main() {
 	x := "Hello World"
 	ch := make(chan string)
+	// @expectedflow: false
 	sink(x) // sink, no leak
 	x = source()
 	ch <- x
@@ -11,7 +12,7 @@ func main() {
 
 func f(ch chan string) {
 	y := <-ch
-	// @ExpectedFlow: true
+	// @expectedflow: true
 	sink(y) // sink, leak
 }
 

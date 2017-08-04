@@ -3,10 +3,10 @@ package main
 func main() {
 	var s string
 	s = source()
-	// should be reported
+	// @expectedflow: true
 	sink(s)
 	t := "Hello World"
-	// shouldn't reported
+	// @expectedflow: false
 	sink(t)
 }
 func sink(s string) {

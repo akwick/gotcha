@@ -12,6 +12,7 @@ func main() {
 	// This statement decomposes into two instructions in SSA:
 	// y = &t.0 (FieldAddr)
 	// *y = source()
+	// @expectedflow: true
 	sink(t.s) // sink, leak
 }
 

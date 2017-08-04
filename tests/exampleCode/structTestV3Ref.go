@@ -12,10 +12,12 @@ type T struct {
 func main() {
 	t := new(T)
 	t.s = source()
+	// @expectedflow: true
 	sink(t.s) // sink, leak
 
 	u := new(T)
 	u.s = "Hello World"
+	// @expectedflow: false
 	sink(u.s) // sink, no leak
 
 	a(u) // u is untainted
@@ -24,6 +26,7 @@ func main() {
 
 // Test a pointer as parameter
 func a(t *T) {
+	// TODO find an annotation solution
 	sink(t.s) // sink, leak if t is tainted
 }
 
