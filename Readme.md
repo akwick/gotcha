@@ -40,7 +40,7 @@ following should work:
 
 ## Run the analysis
 
-0. ./analysis -path="path to go-files as relative part from $GOPATH/src" -src="path to source code file which should analyzed" -ssf="path to the sources and sinks file"
+0. ./gotcha -path="path to go-files as relative part from $GOPATH/src" -src="path to source code file which should analyzed" -ssf="path to the sources and sinks file"
 `./analysis -src="tests/exampleCode/hello.go"`
 1. The -src flag is mandatory, the path, ssf, allpkgs, pkgs and ptrflag are optional.
 2. The default parameter are:
